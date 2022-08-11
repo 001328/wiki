@@ -83,13 +83,17 @@ You can add a Link by adding this line:
 
 # Codeblocks
 
-You can add a codeblock by adding a line of ``` before and after your code
+You can add a codeblock with the highlight command. [This website here](https://github.com/rouge-ruby/rouge/wiki/List-of-supported-languages-and-lexers) provides all supported languages 
 
-```
-    ```
-    code
-    ```
-```
+{% highlight liquid%}
+{% raw %}
+
+{% highlight liquid%}
+
+{% endhighlight%}
+
+{% endraw %}
+{% endhighlight%}
 
 
 # Markdown Resources
@@ -98,6 +102,6 @@ As this is not a Blog about markdown I will stop right here, there are a ton of 
 The best website for markdown in my opinion is [markdownguide](https://www.markdownguide.org/) and of course [jekyllrb](https://jekyllrb.com/)!
 
 
-Highlighting
-https://mycyberuniverse.com/syntax-highlighting-jekyll.html#:~:text=%20Syntax%20Highlighting%20in%20Jekyll%20%201%20Set,is%20the%20language%20identifier.%20To%20find...%20More%20
-[Theme preview](https://jekyll.github.io/minima/)
+[Highlighting](https://mycyberuniverse.com/syntax-highlighting-jekyll.html#:~:text=%20Syntax%20Highlighting%20in%20Jekyll%20%201%20Set,is%20the%20language%20identifier.%20To%20find...%20More%20)
+
+[Minima theme preview](https://jekyll.github.io/minima/)

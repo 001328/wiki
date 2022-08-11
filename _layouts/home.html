@@ -2,6 +2,25 @@
 layout: default
 ---
 
+{% assign rawtags = "" %}
+{% for post in site.posts %}
+	{% assign ttags = post.tags | join:'|' | append:'|' %}
+	{% assign rawtags = rawtags | append:ttags %}
+{% endfor %}
+{% assign rawtags = rawtags | split:'|' | sort %}
+
+{% assign tags = "" %}
+{% for tag in rawtags %}
+	{% if tag != "" %}
+		{% if tags == "" %}
+			{%- assign tags = tag | split:'|' %}
+		{% endif %}
+		{% unless tags contains tag %}
+			{% assign tags = tags | join:'|' | append:'|' | append:tag | split:'|' %}
+		{% endunless %}
+	{% endif %}
+{% endfor %}
+
 <div class="home">
   {%- if page.title -%}
     <h1 class="page-heading">{{ page.title }}</h1>
@@ -10,12 +29,18 @@ layout: default
   {{ content }}
 
   {%- if site.posts.size > 0 -%}
-    <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
+    <a class="post-tag" href="">#all</a>
+    {% for tag in tags %}
+    <a id={{tag}} class="post-tag" href="#{{ tag | slugify }}" onclick="click_the_tag(this.id)"> #{{ tag }} </a>
+    {% endfor %}
+    <h2 class="post-list-heading"><span id="tagID">#all</span> posts</h2>
     <ul class="post-list">
       {%- for post in site.posts -%}
-      <li>
+      {% assign joinedtags = post.tags | join:" " %}
+      <li class="post-elements {{ joinedtags }}">
         {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
         <span class="post-meta">{{ post.date | date: date_format }}</span>
+        <span class="post-meta"> {{post.tags | sort | join:" #" | prepend: "| #"}}</span>
         <h3>
           <a class="post-link" href="{{ post.url | relative_url }}">
             {{ post.title | escape }}
@@ -31,3 +56,21 @@ layout: default
   {%- endif -%}
 
 </div>
+
+
+
+<script>
+
+  function click_the_tag(clicked_id) {
+    document.getElementById("tagID").innerHTML = "#" + clicked_id;
+    const allPosts = document.getElementsByClassName("post-elements");
+    for (const post of allPosts) {
+      post.classList.add("hidden");
+    };
+    const selectedPosts = document.getElementsByClassName(clicked_id);
+    for (const post of selectedPosts) {
+	    post.classList.remove("hidden");
+    };
+  }
+
+</script>

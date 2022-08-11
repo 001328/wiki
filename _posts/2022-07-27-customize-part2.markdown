@@ -14,6 +14,7 @@ This post will cover these topics:
 * add a favicon
 * change the Title & Description
 * change the Footer
+* change the permalink
 
 ## Add readme and License
 
@@ -131,3 +132,18 @@ last step is to remove the texztx "subscribe via RSS" from the main page.
 go to **home.html** and remove line 31
 
 ![picture](/assets/images/website_footer2.png)
+
+
+## Change the permalink
+
+I don't want the URL structure to include the date but I like it a little simpler.
+
+To adjust the URL go to your **_conf** file and add this line
+
+{% highlight markdown %}
+
+permalink: /blog/:title/
+
+{% endhighlight %}
+
+![picture](/assets/images/customize-part2-1.png)
