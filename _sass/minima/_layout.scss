@@ -4,14 +4,28 @@
 
 .hidden { display: none; }
 
+.post-tag {
+  color: $brand-color;
+  display: inline-block;
+  background: $secondary-color;
+  padding: 0 .5rem;
+  margin-right: .3rem;
+  margin-bottom: .1rem;
+  border-radius: 4px;
+  &:hover {
+    text-decoration: none;
+    background: $brand-color;
+    color: $secondary-color;
+  }
+}
  
 
 /**
  * Site header
  */
 .site-header {
-  border-top: 5px solid $grey-color-dark;
-  border-bottom: 1px solid $grey-color-light;
+  border-top: 5px solid $brand-color;
+  border-bottom: 1px solid $secondary-color;
   min-height: $spacing-unit * 1.865;
 
   // Positioning context for the mobile navigation icon
@@ -26,10 +40,6 @@
   margin-bottom: 0;
   float: left;
 
-  &,
-  &:visited {
-    color: $grey-color-dark;
-  }
 }
 
 .site-nav {
@@ -45,7 +55,7 @@
   }
 
   .page-link {
-    color: $text-color;
+    color: $brand-color;
     line-height: $base-line-height;
 
     // Gaps between nav items, but not on the last one
@@ -82,7 +92,7 @@
       text-align: center;
 
       > svg {
-        fill: $grey-color-dark;
+        fill: $brand-color;
       }
     }
 
@@ -114,7 +124,7 @@
  * Site footer
  */
 .site-footer {
-  border-top: 1px solid $grey-color-light;
+  border-top: 1px solid $secondary-color;
   padding: $spacing-unit 0;
 }
 
@@ -131,7 +141,7 @@
 
 .footer-col-wrapper {
   @include relative-font-size(0.9375);
-  color: $grey-color;
+  color: $brand-color;
   margin-left: -$spacing-unit / 2;
   @extend %clearfix;
 }
@@ -207,7 +217,7 @@
 
 .post-meta {
   font-size: $small-font-size;
-  color: $grey-color;
+  color: darken($secondary-color, 30%);
 }
 
 .post-link {

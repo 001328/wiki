@@ -57,6 +57,7 @@ main {
 img {
   max-width: 100%;
   vertical-align: middle;
+  box-shadow: 5px 8px 8px #5e5e5e;
 }
 
 
@@ -107,20 +108,17 @@ a {
   text-decoration: none;
 
   &:visited {
-    color: darken($brand-color, 15%);
+    color: $brand-color;
   }
 
   &:hover {
-    color: $text-color;
+    color: lighten($brand-color, 15%);
     text-decoration: underline;
   }
 
   .social-media-list &:hover {
     text-decoration: none;
 
-    .username {
-      text-decoration: underline;
-    }
   }
 }
 
@@ -212,9 +210,13 @@ pre {
     width: 16px;
     height: 16px;
     display: inline-block;
-    fill: #{$grey-color};
+    fill: #{$brand-color};
     padding-right: 5px;
     vertical-align: text-top;
+
+    &:hover {
+      fill: #{lighten($brand-color, 20%)};
+    }
 }
 
 .social-media-list {

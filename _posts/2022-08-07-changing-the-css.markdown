@@ -5,14 +5,9 @@ date:   2022-08-06 01:10:00 -0400
 tags: css css1 css2 css3 css4 css5 css6 css7 css8 css9 css10
 ---
 
-**you need to change the picture css too - a shadow or sth**
-
-Let's adjust the design a little so it fits into the brand we want to represent.
-
-I don't need to do a lot here at the moment as I already like the plain look of the minima theme.
+Let's adjust the design a little so it fits into the brand we want to represent. I don't need to do a lot here at the moment as I already like the plain look of the default jekyll  theme *minima*.
 
 My biggest changes are the introduction of a **secondary color** instead of the grey and I want to do something with the **tags**
-
 
 What you need to know is you have _layout and _base for your general styling
 and you have the minima.scss for  your variables which are depicted by **$**
@@ -27,26 +22,35 @@ you need a main color and a secondary color - for me the main color should be da
 For the basic adjustments I want to get a primary and secondary color scheme.
 Then I want to adjust the current template a little bit so my colors are reflected.
 
+## _minima.scss
+
+First we go into *_sass/minima.scss*.
+Here, we add a secondary-color variable - play around what color you like.
+You cam also changed the brand-color here.
+
+> **simple is key** here and we want to focus on content, a small resemblence to your company leads a long way - this should still be an enterprise-ready wiki
+
+
+
+![picture](/assets/images/changing-the-css-1.png)
+
+
 ## _layout.scss
 
-First we look into the layout and what we do here
-
-We only really add one thing for post-tag and then adjust the rest a little
+Now we can adjust the _layout.scss.
+We only really add one thing for post-tag and then adjust the rest a little.
 
 # Tags
 
-I kinda like what [this guy](https://github.com/codinfox/codinfox-lanyon/blob/dev/_scss/component/_tag.scss) did
+I kinda like what [this guy](https://github.com/codinfox/codinfox-lanyon/blob/dev/_scss/component/_tag.scss) did.
 
-
-create a new class "post-tag"  - funny enough is that all the tags already have the class attached to it so we can just use it as a base.
-
-
+Create a new class "post-tag"  - funny enough is that all the tags already have the class attached to it so we can just use it as a base.
 add this code to your *Custom* segment in your **_layout.scss**
 
-```
- .post-tag {
+{% highlight scss %}
+
+.post-tag {
   color: $brand-color;
-  // background-color: $brand-color;
   display: inline-block;
   background: $secondary-color;
   padding: 0 .5rem;
@@ -60,22 +64,24 @@ add this code to your *Custom* segment in your **_layout.scss**
   }
 }
 
-```
+{% endhighlight %}
+
+![picture](/assets/images/changing-the-css-2.png)
 
 
 # Site Header
 
-just remove the visited part here and change the colors on border-top and border-bottom
+Change the colors on border-top and border-bottom and remove the &:visited.
 
-```
+
+{% highlight scss %}
+
 /**
  * Site header
  */
 .site-header {
   border-top: 5px solid $brand-color;
   border-bottom: 1px solid $secondary-color;
-  // border-top: 5px solid $grey-color-dark;
-  // border-bottom: 1px solid $grey-color-light;
   min-height: $spacing-unit * 1.865;
 
   // Positioning context for the mobile navigation icon
@@ -90,27 +96,34 @@ just remove the visited part here and change the colors on border-top and border
   margin-bottom: 0;
   float: left;
 
-  // &,
-  // &:visited {
-  //   // color: $grey-color-dark;
-  //   color: pink;
-  // }
 }
-```
 
-# page links
+{% endhighlight %}
 
-change the color from text-color to brand-color
+![picture](/assets/images/changing-the-css-3.png)
+
+
+Then I changed the color of the page links to the other pages
+
+{% highlight scss %}
 
   .page-link {
     color: $brand-color;
-    // color: pink;
-    // color: $text-color;
     line-height: $base-line-height;
 
-# menu icon
+    // Gaps between nav items, but not on the last one
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
 
-change the color to brand-color
+{% endhighlight %}
+
+![picture](/assets/images/changing-the-css-4.png)
+
+I also changed the menu icon (is showed if you narrow your screen)
+
+{% highlight scss %}
 
     .menu-icon {
       display: block;
@@ -122,57 +135,97 @@ change the color to brand-color
       text-align: center;
 
       > svg {
-        // fill: $grey-color-dark;
         fill: $brand-color;
       }
     }
 
+{% endhighlight %}
 
-# site footer
+![picture](/assets/images/changing-the-css-5.png)
 
-change the color of the border to your secondary color and adjust the wrapper of your footer
+
+# Site footer
+
+Change the color of the border to your secondary color and adjust the wrapper of your footer
+
+
+{% highlight scss %}
 
 /**
  * Site footer
  */
 .site-footer {
   border-top: 1px solid $secondary-color;
-  // border-top: 1px solid $grey-color-light;
   padding: $spacing-unit 0;
 }
 
+{% endhighlight %}
+
+![picture](/assets/images/changing-the-css-6.png)
+
+
+
+{% highlight scss %}
 
 .footer-col-wrapper {
   @include relative-font-size(0.9375);
   color: $brand-color;
-  // color: $grey-color;
   margin-left: -$spacing-unit / 2;
   @extend %clearfix;
 }
 
-# page content
+{% endhighlight %}
 
-here we just adjust the page content
+![picture](/assets/images/changing-the-css-7.png)
 
-/**
- * Page content
- */
 
- .post-meta {
+# Page content
+
+Here we just adjust the meta information for each post.
+>Note: Depending on you secondary color you need to make it darker or lighter so it is good to read.
+
+{% highlight scss %}
+
+.post-meta {
   font-size: $small-font-size;
-  // color: lighten($brand-color, 30%);
   color: darken($secondary-color, 30%);
-  // color: $grey-color;
 }
 
+{% endhighlight %}
+
+![picture](/assets/images/changing-the-css-8.png)
+
+
+
 ## _base.scss
-here we only have links and icons
+We can adjust the images, links and icons in *_sass/minima/_base.scss*
+
+
+# Images
+
+For images I want to add a shadow to make them pop a little
+
+{% highlight scss %}
+
+/**
+ * Images
+ */
+img {
+  max-width: 100%;
+  vertical-align: middle;
+  box-shadow: 5px 8px 8px #5e5e5e;
+}
+
+{% endhighlight %}
+
+![picture](/assets/images/changing-the-css-8b.png)
 
 # Links
 
+For the links I just removed the *visited* because I always find it irritating when websites have different colors for links.
+Other changes are colors and the underline for the social media links
 
-you can change the links in the _base.css
-do what you nplease but I didn't do a lot, basically I just removed the visited because I always find that irritating
+{% highlight scss %}
 
 /**
  * Links
@@ -181,26 +234,31 @@ a {
   color: $brand-color;
   text-decoration: none;
 
-
+  &:visited {
+    color: $brand-color;
+  }
 
   &:hover {
-    // color: $secondary-color;
-    color: lighten($brand-color, 20%);
+    color: lighten($brand-color, 15%);
     text-decoration: underline;
   }
 
   .social-media-list &:hover {
     text-decoration: none;
 
-    // .username {
-    //   text-decoration: underline;
-    // }
   }
 }
+
+{% endhighlight %}
+
+![picture](/assets/images/changing-the-css-9.png)
+
 
 # Icons
 
 change the icon fill to your brand color
+
+{% highlight scss %}
 
 /**
  * Icons
@@ -210,25 +268,22 @@ change the icon fill to your brand color
     width: 16px;
     height: 16px;
     display: inline-block;
-    // fill: #{$grey-color};
     fill: #{$brand-color};
     padding-right: 5px;
     vertical-align: text-top;
+
+    &:hover {
+      fill: #{lighten($brand-color, 20%)};
+    }
 }
 
+{% endhighlight %}
+
+![picture](/assets/images/changing-the-css-10.png)
 
 
-## minima.scss
 
-the only thing I personally change here is the brand color and I added a secondary color
-
-> **simple is key** here and we want to focus on content, a small resemblence to your company leads a long way - this should still be an enterprise ready wiki
-
-```
-$brand-color:      #5d6541 !default;
-$secondary-color: #e7d496;
-
-```
 
 
 ## DONE
+
