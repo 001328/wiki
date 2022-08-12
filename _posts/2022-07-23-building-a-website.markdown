@@ -89,6 +89,16 @@ To host it for free we will change only one step.
   - baseurl: "/wiki"
   - url: "https://001328/github.io"
   ![publish1](/assets/images/website_publish1.png)
+
+
+Note: If you want to publish your website to enterprise github you need to put the enterprise github address into **url**  and your organization/repo in **baseurl**
+
+{% highlight yml%}
+
+baseurl: "/organization/repository/"
+url: "https://pages.git.xxx.com"
+
+{% endhighlight %}
   
 1. publish to github in repo (commit and push to main branch)
 ![publish2](/assets/images/website_publish2.png)
