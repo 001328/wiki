@@ -203,7 +203,7 @@ We can adjust the images, links and icons in *_sass/minima/_base.scss*
 
 # Images
 
-For images I want to add a shadow to make them pop a little
+For images I want to add a shadow to make them pop a little.
 
 {% highlight scss %}
 
@@ -219,6 +219,13 @@ img {
 {% endhighlight %}
 
 ![picture](/assets/images/changing-the-css-8b.png)
+
+
+If you want to change the shadow to a *"glowy"* style you can als try this.
+
+{% highlight scss %}
+box-shadow: 0px 0px 11px #000000;
+{% endhighlight %}
 
 # Links
 
