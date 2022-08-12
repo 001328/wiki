@@ -93,7 +93,7 @@ To host it for free we will change only one step.
 
 Note: If you want to publish your website to enterprise github you need to put the enterprise github address into **url**  and your organization/repo in **baseurl**
 
-{% highlight yml%}
+{% highlight html %}
 
 baseurl: "/organization/repository/"
 url: "https://pages.git.xxx.com"
