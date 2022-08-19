@@ -3,7 +3,7 @@ layout: post
 title:  "Customize the template | Part 2"
 date:   2022-07-26 01:05:00 -0400
 categories: tutorial
-tags: jekyll
+tags: github-pages
 ---
 
 In the last post we started to customized the folder structure of our new template.

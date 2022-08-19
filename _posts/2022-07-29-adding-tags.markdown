@@ -2,7 +2,7 @@
 layout: post
 title:  Adding tags for Navigation
 date:   2022-07-29 01:10:00 -0400
-tags: navigation jekyll
+tags: github-pages
 ---
 
 Let's add some navigation.

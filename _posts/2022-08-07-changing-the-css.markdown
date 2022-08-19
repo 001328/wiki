@@ -2,7 +2,7 @@
 layout: post
 title:  "Jekyll // Design"
 date:   2022-08-06 01:10:00 -0400
-tags: css css1 css2 css3 css4 css5 css6 css7 css8 css9 css10
+tags: github-pages
 ---
 
 Let's adjust the design a little so it fits into the brand we want to represent. I don't need to do a lot here at the moment as I already like the plain look of the default jekyll  theme *minima*.

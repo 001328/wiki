@@ -2,7 +2,7 @@
 layout: post
 title:  "Creating content"
 date:   2022-07-28 01:10:00 -0400
-tags: github-pages jekyll markdown
+tags: github-pages
 ---
 
 now let's create some content in markdown
