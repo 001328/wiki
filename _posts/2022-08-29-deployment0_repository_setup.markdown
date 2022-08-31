@@ -21,14 +21,20 @@ First, create a new repository called *infrastructure*.
 
 ![picture](/assets/images/az-deployments0-0.png)
 
-Then create 3 Folders: **.github** | **templates** | **templates_custom**
-Within **.github** we create another folder **workflows**
+Then create 3 Folders: **.github**, **templates** and **templates_custom**. Within **.github** we create another folder **workflows**
 
-The Folder **.github** will contain the yaml files which trigger the actual deployments.
-The Folder **templates** will contain standard templates we can use.
-The Folder **templates_custom** will contain the customized templates
+* The Folder **.github** will contain the yaml files which trigger the actual deployments.
+* The Folder **templates** will contain standard templates we can use.
+* The Folder **templates_custom** will contain the customized templates
 
-cleanup and only leave one single file for creating a resource group
+
+
+
+
+Clean up and only leave one single file for creating a resource group.
+
+
+
 
 # set up credentials
 
