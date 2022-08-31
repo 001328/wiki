@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Azure Deployment 0 // Repository setup"
-date:   2022-08-29 01:10:00 -0400
+title:  "Azure Deployment 1 // Resource group"
+date:   2022-08-31 01:00:00 -0400
 tags: azure-deployments
 ---
 
