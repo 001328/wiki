@@ -21,7 +21,12 @@ First, create a new repository called *infrastructure*.
 
 ![picture](/assets/images/az-deployments0-0.png)
 
-Then create 3 Folders: **.github**, **templates** and **templates_custom**. Within **.github** we create another folder **workflows**
+Now clone the folder to your local computer.
+
+Then create 3 Folders: **.github**, **templates** and **templates_custom**. Within **.github** we create another folder **workflows**.
+Push all changes to GitHub.
+
+![picture](/assets/images/az-deployments0-01.png)
 
 * The Folder **.github** will contain the yaml files which trigger the actual deployments.
 * The Folder **templates** will contain standard templates we can use.
