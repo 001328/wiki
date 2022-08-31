@@ -14,26 +14,101 @@ I use github actions as it is pretty powerful and simple.
 > github.com does not need this
 
 
-# set up repository
+# initialize a new repository
 
 First, create a new repository called *infrastructure*.
 > I created it as a public repository so anyone can clone it and deploy my infrastructure to play around with it.
 
 ![picture](/assets/images/az-deployments0-0.png)
 
+
+# clone repository
+
 Now clone the folder to your local computer.
+
+Go to *Code*, then copy the link. Now go to your GitHub Desktop and Add the repository to the root folder - *001328* in my case.
+
+![picture](/assets/images/az-deployments0-01.png)
+
+
+# set up credentials
+
+The next step is to set up the azure credentials we will need to deploy anything into our azure subscription.
+We do this via **GitHub Secrets**.
+
+> Secrets are environment variables that are encrypted. Anyone with collaborator access to this repository can use these secrets for Actions.
+> Secrets are not passed to workflows that are triggered by a pull request from a fork. [Learn more](https://docs.github.com/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets).
+
+Let's start with adding three secrets.
+
+* subscriptionid
+* azurelogincreds
+* resourcegroupname
+
+All secrets we use for now are repository secrets. Later on we will add multiple environments and change the secrets to reflect these changes.
+
+To start, go to the Tab **Settings** and then you will find **Secrets** in the Navigation pane on the left. Here, select **Actions**.
+
+![picture](/assets/images/az-deployments0-02.png)
+
+
+## subscriptionid
+
+First we will start with a subscriptionid.
+
+Open the [azure portal](https://portal.azure.com/) and search for **subscriptions** in the search bar on top.
+
+![picture](/assets/images/az-deployments0-03.png)
+
+From here either select the subscription you want to use or create a new one if it is empty.
+Copy the Subscription ID, it should have this format xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.
+
+2ae7416a-b051-4f9e-ad89-3952c9d79f27
+
+
+
+## azurelogincreds
+
+
+## resourcegroupname
+
+
+next up: set up credentials -> adding 3 secrets: azurelogincreds, resourcegroupname, subscriptionid
+
+{
+"clientId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+"clientSecret": "xxxxxxxxxxxx",
+"subscriptionId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+"tenantId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+}
+
+
+
+
+---
+
+
+
+
+
+
+
+
+
+
+
 
 Then create 3 Folders: **.github**, **templates** and **templates_custom**. Within **.github** we create another folder **workflows**.
 Push all changes to GitHub.
 
-![picture](/assets/images/az-deployments0-01.png)
+![picture](/assets/images/az-deployments0-99.png)
 
 * The Folder **.github** will contain the yaml files which trigger the actual deployments.
 * The Folder **templates** will contain standard templates we can use.
 * The Folder **templates_custom** will contain the customized templates
 
 
-
+az-deployments0-02.png
 
 
 Clean up and only leave one single file for creating a resource group.
@@ -41,25 +116,7 @@ Clean up and only leave one single file for creating a resource group.
 
 
 
-# set up credentials
 
-* azurelogincreds
-* resourcegroupname
-* subscriptionid
-
-next up: set up credentials -> adding 3 secrets: azurelogincreds, resourcegroupname, subscriptionid
-
-{
-
-"clientId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-
-"clientSecret": "xxxxxxxxxxxx",
-
-"subscriptionId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-
-"tenantId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-
-}
 
 --
 
