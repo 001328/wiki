@@ -63,11 +63,61 @@ Open the [azure portal](https://portal.azure.com/) and search for **subscription
 From here either select the subscription you want to use or create a new one if it is empty.
 Copy the Subscription ID, it should have this format xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.
 
-2ae7416a-b051-4f9e-ad89-3952c9d79f27
+
+Switch back to the github tab and add a new repository secret via the button.
+
+![picture](/assets/images/az-deployments0-04.png)
+
+Then add the Subscription ID as the VAlue and give it a name you like.
+
+> I always use lowercaps without hyphens, underscores or other funky stuff as different tools sometimes don't like it and this way I can keep it consistent!
+> Also no numbers at the beginning or end
+> Here it doesn't matter as GitHub transforms your secret in UPPERCAPS anyways
+
+
+
+
+And you are done!
+
+![picture](/assets/images/az-deployments0-06.png)
+
+> **Please note** that nobody can see this secret again so make sure to save it in your password safe of choice
+
+You can only update the secret, if you do then you have to re-enter it and save again!
 
 
 
 ## azurelogincreds
+
+The next secret we add are azurelogincreds.
+
+These are the azure login credentials GitHub uses login to azure and create resources.
+To do this it uses a [Service Principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals) which we will create before.
+
+The azure login credentials have this format:
+
+{
+"clientId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+"clientSecret": "xxxxxxxxxxxx",
+"subscriptionId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+"tenantId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+}
+
+We already have the subscriptionId and you can find the tenantId by searching for **tenant properties** in the azure search bar (just like you did for the Subscription ID).
+
+![picture](/assets/images/az-deployments0-07.png)
+
+In the properties you can copy the Tenant ID by selecting the little Icon next to the ID.
+
+![picture](/assets/images/az-deployments0-08.png)
+
+
+Now we only miss the clientId and the clientSecret.
+
+To get them we will go into the active directory and create a new Service Principal.
+Then we create a secret for this Service Principal and put the secret value in clientSecret.
+
+> **Note**: Also the secret value will only be shown **once**
 
 
 ## resourcegroupname
