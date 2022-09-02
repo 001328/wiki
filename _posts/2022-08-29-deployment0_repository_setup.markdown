@@ -116,52 +116,65 @@ Next step: Get a clientId and the clientSecret. This is a Service Principal.
 
 ## Service Principal setup
 
-Search for App registrations
+* Search for App registrations
 
 ![picture](/assets/images/az-deployments0-09.png)
 
 
-Then click on **New registration**.
+* select **New registration**
 
-In case you work for a bigger Enterprise you will see an **Access denied**
-Then you need to set up the service principal through an alternative route, please talk to your network team to do so.
+![picture](/assets/images/az-deployments0-10.png)
 
+* give it a good name and select **Register**
+![picture](/assets/images/az-deployments0-11.png)
 
-After setting up your Service Principalyou need to add a **client secret**.
+* select **Certificates & secrets** on the left blade, then select **New client secret**
+![picture](/assets/images/az-deployments0-12.png)
 
----
+* choose a good name, an expiration date (good habits for security) and add the secret
+![picture](/assets/images/az-deployments0-13.png)
 
+* save the *value* in a **secure location** (like Keepass - yes, notepad++ - no). You can only see the value one time.
+![picture](/assets/images/az-deployments0-14.png)
 
+* go to the **Overview** and you can copy the client ID
+![picture](/assets/images/az-deployments0-15.png)
 
-
-
-
-
-To get them we will go into the active directory and create a new Service Principal.
-Then we create a secret for this Service Principal and put the secret value in clientSecret.
-
-> **Note**: Also the secret value will only be shown **once**
-
-
-
-
+Now we have everything we need to complete the azure login credentials! Here is an example how it should look like (subscriptionId and tenantId are randomized):
 
 {
-
-"clientId": "773378d4-35b3-4d37-b305-ee268a03aea7",
-
-"clientSecret": "6GN7Q~kXjgOo51lXBbkNehCgTHOADdVh.ApsZ",
-
-"subscriptionId": "2ae7416a-b051-4f9e-ad89-3952c9d79f27",
-
-"tenantId": "9652d7c2-1ccf-4940-8151-4a92bd474ed0"
-
+"clientId": "f19302cf-18f1-4789-85fa-048a7f03471e",
+"clientSecret": "fdr8Q~Z60kVE3zjGfOCl3EMtmy~ZCx2dL5pLic~k",
+"subscriptionId": "64dbf7h2x-5oi4-4ap8-d7r2-de5489b4j8pq",
+"tenantId": "73xz6g8q-6uu2-1tt2-j6i8-po7823l5j5qs"
 }
 
 
+> In case you work for a bigger Enterprise you will see an **Access denied**.
+> Then you need to set up the service principal through an alternative route, please talk to your network team to do so. The company I work for has a separate tool to create anything in the Active Directory and I need a dedicated admin user to create a client secret.
+
+
+* Go back to the **Settings** in your GitHub Repository and select **New repository secret**
+![picture](/assets/images/az-deployments0-16.png)
+
+Whatever you will deploy now will be deployed to the Tenant and Subscription you entered. For multiple Environments I recommend to have one secret each.
+* azurelogincreds_dev
+* azurelogincreds_test
+* azurelogincreds_prod
+
+
+---
+
+**I need to give permissions to the service principal I suppose**
 
 
 
+
+
+
+Done with the preparation!
+
+Next step: Deploy something!
 
 
 
