@@ -1,12 +1,12 @@
 ---
 layout: post
-title:  "Azure Deployment 0 // Repository setup"
+title:  "Azure Deployment 0 // setup and a resource group"
 date:   2022-08-29 01:10:00 -0400
 tags: azure-deployments
 ---
 
 In this series **azure-deployments** we will deploy our infrastructure to azure.
-The first step is to understand how a deployment works in general so we have a base to build upon.
+The first step is to set up some basics and deploy a resource group.
 
 I use github actions as it is pretty powerful and simple.
 
@@ -14,7 +14,7 @@ I use github actions as it is pretty powerful and simple.
 > github.com does not need this
 
 
-# initialize a new repository
+# Initialize a new repository
 
 First, create a new repository called *infrastructure*.
 > I created it as a public repository so anyone can clone it and deploy my infrastructure to play around with it.
@@ -142,12 +142,17 @@ Next step: Get a clientId and the clientSecret. This is a Service Principal.
 
 Now we have everything we need to complete the azure login credentials! Here is an example how it should look like (subscriptionId and tenantId are randomized):
 
+
+{% highlight powershell %}
+
 {
 "clientId": "f19302cf-18f1-4789-85fa-048a7f03471e",
 "clientSecret": "fdr8Q~Z60kVE3zjGfOCl3EMtmy~ZCx2dL5pLic~k",
 "subscriptionId": "64dbf7h2x-5oi4-4ap8-d7r2-de5489b4j8pq",
 "tenantId": "73xz6g8q-6uu2-1tt2-j6i8-po7823l5j5qs"
 }
+
+{% endhighlight %}
 
 
 > In case you work for a bigger Enterprise you will see an **Access denied**.
@@ -174,7 +179,7 @@ Whatever you will deploy now will be deployed to the Tenant and Subscription you
 
 Done with the preparation!
 
-Next step: Deploy something!
+Next step: Deploy a resource group!
 
 
 
