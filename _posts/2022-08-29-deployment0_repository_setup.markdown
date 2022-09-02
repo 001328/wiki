@@ -111,13 +111,70 @@ In the properties you can copy the Tenant ID by selecting the little Icon next t
 
 ![picture](/assets/images/az-deployments0-08.png)
 
+Next step: Get a clientId and the clientSecret. This is a Service Principal.
 
-Now we only miss the clientId and the clientSecret.
+
+## Service Principal setup
+
+Search for App registrations
+
+![picture](/assets/images/az-deployments0-09.png)
+
+
+Then click on **New registration**.
+
+In case you work for a bigger Enterprise you will see an **Access denied**
+Then you need to set up the service principal through an alternative route, please talk to your network team to do so.
+
+
+After setting up your Service Principalyou need to add a **client secret**.
+
+---
+
+
+
+
+
+
 
 To get them we will go into the active directory and create a new Service Principal.
 Then we create a secret for this Service Principal and put the secret value in clientSecret.
 
 > **Note**: Also the secret value will only be shown **once**
+
+
+
+
+
+{
+
+"clientId": "773378d4-35b3-4d37-b305-ee268a03aea7",
+
+"clientSecret": "6GN7Q~kXjgOo51lXBbkNehCgTHOADdVh.ApsZ",
+
+"subscriptionId": "2ae7416a-b051-4f9e-ad89-3952c9d79f27",
+
+"tenantId": "9652d7c2-1ccf-4940-8151-4a92bd474ed0"
+
+}
+
+
+
+
+
+
+
+
+
+---
+---
+---
+
+
+
+
+
+
 
 
 ## resourcegroupname
