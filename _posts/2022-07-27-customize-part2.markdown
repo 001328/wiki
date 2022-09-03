@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Customize the template | Part 2"
+title:  "GitHub pages 4 | Customize the template 2"
 date:   2022-07-26 01:05:00 -0400
 categories: tutorial
 tags: github-pages

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "A custom name for your GitHub pages website"
+title:  "GitHub pages 2 | Get a custom domain name"
 date:   2022-07-24 01:05:00 -0400
 categories: website
 tags: github-pages

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Azure Deployment 1 // Resource group"
+title:  "Azure Deployment 2 | Next steps"
 date:   2022-08-31 01:00:00 -0400
 tags: azure-deployments
 ---

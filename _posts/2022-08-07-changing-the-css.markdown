@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Jekyll // Design"
+title:  "GitHub pages 7 | Change the Design"
 date:   2022-08-06 01:10:00 -0400
 tags: github-pages
 ---

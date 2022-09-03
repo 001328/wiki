@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Building a website with Jekyll and GitHub pages"
+title:  "GitHub pages 1 | Build a jekyll website"
 date:   2022-07-23 01:00:00 -0400
 categories: tutorial
 tags: github-pages

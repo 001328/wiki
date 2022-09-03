@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Azure Deployment 0 // setup and a resource group"
+title:  "Azure Deployment 1 | Initial setup and resource group deployment"
 date:   2022-08-29 01:10:00 -0400
 tags: azure-deployments
 ---

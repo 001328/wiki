@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Adding tags for Navigation
+title:  GitHub pages 6 | Add navigation tags
 date:   2022-07-29 01:10:00 -0400
 tags: github-pages
 ---

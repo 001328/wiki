@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Creating content"
+title:  "GitHub pages 5 | Create content"
 date:   2022-07-28 01:10:00 -0400
 tags: github-pages
 ---
