@@ -194,42 +194,29 @@ First, add another secret for the name of your resource group
 ![picture](/assets/images/az-deployments0-17.png)
 
 
-
-## Secret: location
-
-Add another secret for the location of the microsoft datacenter where you want all your infrastructure to be deployed in
-
-* Select **New repository secret** within *Settings/Secrets/Actions*
-* Enter the location you want to use and select **Add secret**
-
-> **Note:** I recommend to use the location closest to you. For me it is eastus2.
-The guys from [azuretracks](https://azuretracks.com/2021/04/current-azure-region-names-reference/) have put together a nice list with all the abbreviations.
-[Here](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.documents.locationnames?view=azure-dotnet) is another list.
-
-
-![picture](/assets/images/az-deployments0-18.png)
-
-
-
-
 ## Folder structure
 
 
-Create 3 Folders in your repository: **.github**, **templates** and **templates_custom**. Within **.github** we create another folder **workflows**.
+Create 2 Folders in your repository: **.github** and **templates**. 
+Within **.github**, create another folder **workflows**.
 Push all changes to GitHub.
 
-![picture](/assets/images/az-deployments0-99.png)
+![picture](/assets/images/az-deployments0-18.png)
 
 * The Folder **.github** will contain the yaml files which trigger the actual deployments.
-* The Folder **templates** will contain standard templates we can use.
-* The Folder **templates_custom** will contain the customized templates
+* The Folder **templates** will the resource templates.
 
 
 
 ## resource group template
 
 Create a custom template for the resource group deployment by creating a new file in your preferred editor, like [visual studio code](https://code.visualstudio.com/Download). 
-Enter the following code and save as **resourcegroup.json**.
+Enter the following code and save as **resourcegroupdeployment.json** in the folder **templates**.
+
+> **Note:** I recommend to use the location closest to you. For me it is eastus2.
+The guys from [azuretracks](https://azuretracks.com/2021/04/current-azure-region-names-reference/) have put together a nice list with all the abbreviations.
+[Here](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.documents.locationnames?view=azure-dotnet) is another list.
+
 
 
 {% highlight json %}
@@ -239,15 +226,14 @@ Enter the following code and save as **resourcegroup.json**.
     "contentVersion": "1.0.0.0",
     "parameters":
     {
-        "ResourceGroupName": { "type": "string" },
-        "Location": { "type": "string" }
+        "ResourceGroupName": { "type": "string" }
     },
     "resources": [
         {
             "type": "Microsoft.Resources/resourceGroups",
             "apiVersion": "[providers('Microsoft.Resources','resourceGroups').apiVersions[0]]",
             "name": "[parameters('ResourceGroupName')]",
-            "location": "[parameters('Location')]"
+            "location": "eastus2"
         }
     ]
 }
@@ -264,7 +250,7 @@ Enter the following code and save as **resourcegroup.json**.
 
 Create a new file and paste the following code and save as **resourcegroup.yaml**
 
-> Note: the region is the location of the deployment **within azure**! If you change it there will be an error in the template validation. If so you need to remove the deployment via the azure shell
+> Note: the region is the location of the deployment **within azure**! If you change it after you already deployed the template, you will get an error in the template validation. If so, you need to remove the deployment via the azure shell
 > $deployments = Get-AzManagementGroupDeployment -ManagementGroupId ES
 > foreach ($deployment in $deployments) {Remove-AzManagementGroupDeployment -ManagementGroupId ES -Name $deployment.DeploymentName}
 
@@ -290,10 +276,9 @@ jobs:
        scope: subscription
        subscriptionId: ${{ secrets.SUBSCRIPTIONID }}
        region: eastus2
-       template: ./templates_custom/resourcegroupdeployment.json
+       template: ./templates/resourcegroupdeployment.json
        parameters:
          ResourceGroupName=${{ secrets.RESOURCEGROUPNAME }}
-         Location=${{ secrets.LOCATION }}
 
 {% endhighlight %}
 
