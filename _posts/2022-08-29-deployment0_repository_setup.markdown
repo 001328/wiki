@@ -188,29 +188,22 @@ Next step: Deploy a resource group!
 ---
 ---
 
+# Deploy a resource group
 
 
+## Secret: resourcegroupname
+
+First, add another secret for the name of your resource group
+
+* Select **New repository secret** within *Settings/Secrets/Actions*
+* Enter the name you want to give your resource group and select **Add secret**
+
+> **Note:** I recommend to follow the [recommended abbreviations for Azure resource types](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
+> **I use lowercaps without hyphens as some resources don't allow it and append the abbreviation as a suffix**
 
 
+![picture](/assets/images/az-deployments0-17.png)
 
-
-
-## resourcegroupname
-
-
-next up: set up credentials -> adding 3 secrets: azurelogincreds, resourcegroupname, subscriptionid
-
-{
-"clientId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-"clientSecret": "xxxxxxxxxxxx",
-"subscriptionId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-"tenantId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-}
-
-
-
-
----
 
 
 
