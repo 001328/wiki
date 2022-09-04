@@ -172,23 +172,12 @@ Whatever you will deploy now will be deployed to the Tenant and Subscription you
 
 **I need to give permissions to the service principal I suppose**
 
-
-
-
-
-
-Done with the preparation!
-
-Next step: Deploy a resource group!
-
-
-
-
----
----
 ---
 
-# Deploy a resource group
+**Done with the preparation!**
+
+
+# Next step: Deploy a resource group
 
 
 ## Secret: resourcegroupname
@@ -206,17 +195,27 @@ First, add another secret for the name of your resource group
 
 
 
+## Secret: location
+
+Add another secret for the location of the microsoft datacenter where you want all your infrastructure to be deployed in
+
+* Select **New repository secret** within *Settings/Secrets/Actions*
+* Enter the location you want to use and select **Add secret**
+
+> **Note:** I recommend to use the location closest to you. For me it is eastus2.
+The guys from [azuretracks](https://azuretracks.com/2021/04/current-azure-region-names-reference/) have put together a nice list with all the abbreviations.
+[Here](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.documents.locationnames?view=azure-dotnet) is another list.
+
+
+![picture](/assets/images/az-deployments0-18.png)
 
 
 
 
+## Folder structure
 
 
-
-
-
-
-Then create 3 Folders: **.github**, **templates** and **templates_custom**. Within **.github** we create another folder **workflows**.
+Create 3 Folders in your repository: **.github**, **templates** and **templates_custom**. Within **.github** we create another folder **workflows**.
 Push all changes to GitHub.
 
 ![picture](/assets/images/az-deployments0-99.png)
@@ -226,29 +225,102 @@ Push all changes to GitHub.
 * The Folder **templates_custom** will contain the customized templates
 
 
-az-deployments0-02.png
+
+## resource group template
+
+Create a custom template for the resource group deployment by creating a new file in your preferred editor, like [visual studio code](https://code.visualstudio.com/Download). 
+Enter the following code and save as **resourcegroup.json**.
 
 
-Clean up and only leave one single file for creating a resource group.
+{% highlight json %}
+
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters":
+    {
+        "ResourceGroupName": { "type": "string" },
+        "Location": { "type": "string" }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Resources/resourceGroups",
+            "apiVersion": "[providers('Microsoft.Resources','resourceGroups').apiVersions[0]]",
+            "name": "[parameters('ResourceGroupName')]",
+            "location": "[parameters('Location')]"
+        }
+    ]
+}
 
 
-
-
-
-
---
-
-added secret for resourcegroupname_test: "1328_testrg"
-
-
-
-
----
-
-
-I kinda like what [this guy](https://github.com/codinfox/codinfox-lanyon/blob/dev/_scss/component/_tag.scss) did.
-{% highlight scss %}
 {% endhighlight %}
+
+
+![picture](/assets/images/az-deployments0-19.png)
+
+
+
+## resource group workflow
+
+Create a new file and paste the following code and save as **resourcegroup.yaml**
+
+> Note: the region is the location of the deployment **within azure**! If you change it there will be an error in the template validation. If so you need to remove the deployment via the azure shell
+> $deployments = Get-AzManagementGroupDeployment -ManagementGroupId ES
+> foreach ($deployment in $deployments) {Remove-AzManagementGroupDeployment -ManagementGroupId ES -Name $deployment.DeploymentName}
+
+
+{% highlight yaml %}
+
+name: Resource Group Deployment
+on: workflow_dispatch
+jobs:
+ build:
+  runs-on: ubuntu-latest
+  steps:
+   - uses: actions/checkout@v2
+
+   - name: Login to Azure
+     uses: azure/login@v1.1
+     with:
+       creds: ${{ secrets.AZURELOGINCREDS }}
+
+   - name: Create Resource Group
+     uses: azure/arm-deploy@v1
+     with:
+       scope: subscription
+       subscriptionId: ${{ secrets.SUBSCRIPTIONID }}
+       region: eastus2
+       template: ./templates_custom/resourcegroupdeployment.json
+       parameters:
+         ResourceGroupName=${{ secrets.RESOURCEGROUPNAME }}
+         Location=${{ secrets.LOCATION }}
+
+{% endhighlight %}
+
+
+## run the workflow
+
+* push everything to GitHub
+![picture](/assets/images/az-deployments0-20.png)
+
+
+* In GitHub, go to the tab **Actions** and Select the workflow **Resource Group Deployment**
+![picture](/assets/images/az-deployments0-21.png)
+
+
+* Select **Run workflow**
+![picture](/assets/images/az-deployments0-22.png)
+
+
+* If you select the name of the workflow you can watch the **build**
+![picture](/assets/images/az-deployments0-23.png)
+
+
+* Once you see a green button you are done and can test if you see your new resource group!
+![picture](/assets/images/az-deployments0-24.png)
+
+
+
 
 
 
