@@ -211,7 +211,7 @@ Push all changes to GitHub.
 ## resource group template
 
 Create a custom template for the resource group deployment by creating a new file in your preferred editor, like [visual studio code](https://code.visualstudio.com/Download). 
-Enter the following code and save as **resourcegroupdeployment.json** in the folder **templates**.
+Enter the following code and save as **resourcegroup.json** in the folder **templates**.
 
 > **Note:** I recommend to use the location closest to you. For me it is eastus2.
 The guys from [azuretracks](https://azuretracks.com/2021/04/current-azure-region-names-reference/) have put together a nice list with all the abbreviations.
