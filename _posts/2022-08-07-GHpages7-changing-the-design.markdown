@@ -40,6 +40,53 @@ You cam also changed the brand-color here.
 Now we can adjust the _layout.scss.
 We only really add one thing for post-tag and then adjust the rest a little.
 
+
+Also adjust the header sizes here.
+
+You will see that the Header sizes are not yet consistent.
+You can adjust this within .post-content
+
+{% highlight scss %}
+
+.post-content {
+  margin-bottom: $spacing-unit;
+
+  h1 {
+    @include relative-font-size(2);
+
+    @include media-query($on-laptop) {
+      @include relative-font-size(1.75);
+    }
+  }
+
+  h2 {
+    @include relative-font-size(1.75);
+
+    @include media-query($on-laptop) {
+      @include relative-font-size(1.75);
+    }
+  }
+
+  h3 {
+    @include relative-font-size(1.5);
+
+    @include media-query($on-laptop) {
+      @include relative-font-size(1.375);
+    }
+  }
+
+  h4 {
+    @include relative-font-size(1.25);
+
+    @include media-query($on-laptop) {
+      @include relative-font-size(1.125);
+    }
+  }
+}
+
+{% endhighlight %}
+
+
 # Tags
 
 I kinda like what [this guy](https://github.com/codinfox/codinfox-lanyon/blob/dev/_scss/component/_tag.scss) did.

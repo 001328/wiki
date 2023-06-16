@@ -29,9 +29,9 @@ layout: default
   {{ content }}
 
   {%- if site.posts.size > 0 -%}
-    <a class="post-tag" href="">#all</a>
+    <a class="post-tag" href="" style="color:#ffffff">#all</a>
     {% for tag in tags %}
-    <a id={{tag}} class="post-tag" href="#{{ tag | slugify }}" onclick="click_the_tag(this.id)"> #{{ tag }} </a>
+    <a id={{tag}} class="post-tag" href="#{{ tag | slugify }}" onclick="click_the_tag(this.id)" style="color:#ffffff"> #{{ tag }} </a>
     {% endfor %}
     <h2 class="post-list-heading"><span id="tagID">#all</span> posts</h2>
     <ul class="post-list">
